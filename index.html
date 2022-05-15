@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First pratice branch!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="hero">
+        <nav>
+            <img src="imgs/logo.webp" alt="" class="logo">
+            <div class="user">
+                <button type="button">Explore</button>
+                <img src="imgs/user.png" alt="">
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="info">
+                <h1>DISCOVER</h1>
+                <P>iasdnj asoidjas aisdjoa asoidja aoisdj ai ajsdaosidj aoisa jdaosidj aosijdaoisj oai jaoisj aiao jad jaoj aoj aoj ajaisjo aijas</P>
+                <input type="text" placeholder="Seach">
+            </div>
+        </div>
+
+        <div class="slider">
+            <img src="imgs/left-arrow.png" id="prev" alt="">
+            <div class="preview">
+                <img src="imgs/slide1.webp" alt="" class="trumbnail active">
+                <img src="imgs/slide2.jpg" alt="" class="trumbnail">
+                <img src="imgs/slide3.jpg" alt="" class="trumbnail">
+                <img src="imgs/slide4.jpg" alt="" class="trumbnail">
+                <img src="imgs/slide5.webp" alt="" class="trumbnail">
+            </div>
+            <img src="imgs/left-arrow.png" id="next" alt="">
+        </div>
+    </div>
+
+    <script>
+        var prev = document.getElementById('prev');
+        var next = document.getElementById('next');
+        var trumbnail = document.getElementsByClassName('trumbnail');
+        var hero = document.getElementById("hero");
+        var backgroundImg = [
+            'imgs/slide1.webp',
+            'imgs/slide2.jpg',
+            'imgs/slide3.jpg',
+            'imgs/slide4.jpg',
+            'imgs/slide5.jpg',
+        ]
+        let i = 0;
+        next.onclick = () => {
+            if(i < backgroundImg.length){
+                hero.style.backgroundImage = `url("${backgroundImg[i+1]}")`;
+                trumbnail[i + 1].classList.add('active');
+                trumbnail[i].classList.remove('active');
+                i++;
+            }
+        }
+
+        prev.onclick = () => {
+            if(i > 0)
+            hero.style.backgroundImage = `url("${backgroundImg[i-1]}")`;
+            trumbnail[i - 1].classList.add('active');
+            trumbnail[i].classList.remove('active');
+            i--;
+        }
+        
+    </script>
+</body>
+</html>
