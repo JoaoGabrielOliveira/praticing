@@ -28,7 +28,7 @@
         <div class="slider">
             <img src="imgs/left-arrow.png" id="prev" alt="">
             <div class="preview">
-                <img src="imgs/slide1.webp" alt="" class="trumbnail active">
+                <img src="imgs/slide1.webp" alt="" class="trumbnail">
                 <img src="imgs/slide2.jpg" alt="" class="trumbnail">
                 <img src="imgs/slide3.jpg" alt="" class="trumbnail">
                 <img src="imgs/slide4.jpg" alt="" class="trumbnail">
@@ -39,22 +39,30 @@
     </div>
 
     <script>
-        var prev = document.getElementById('prev');
-        var next = document.getElementById('next');
-        var trumbnail = document.getElementsByClassName('trumbnail');
-        var hero = document.getElementById("hero");
-        var backgroundImg = [
+        const backgroundImg = [
             'imgs/slide1.webp',
             'imgs/slide2.jpg',
             'imgs/slide3.jpg',
             'imgs/slide4.jpg',
             'imgs/slide5.jpg',
-        ]
+        ];
+
+        var trumbnail = loadPreview();
+
+        var prev = document.getElementById('prev');
+        var next = document.getElementById('next');
+        var hero = document.getElementById("hero");
         let i = 0;
+
+        trumbnail[i].classList.add('active');
+        hero.style.backgroundImage = `url("${backgroundImg[i]}")`;
+        
+
         next.onclick = () => {
             if(i < backgroundImg.length){
                 trumbnail[i].classList.remove('active');
-                hero.style.backgroundImage = `url("${backgroundImg[i++]}")`;
+                i++
+                hero.style.backgroundImage = `url("${backgroundImg[i]}")`;
                 trumbnail[i].classList.add('active');
             }
         }
@@ -62,10 +70,20 @@
         prev.onclick = () => {
             if(i > 0)
             trumbnail[i].classList.remove('active');
-            hero.style.backgroundImage = `url("${bacgroundImg[i--]}")`;
+            i--
+            hero.style.backgroundImage = `url("${backgroundImg[i]}")`;
             trumbnail[i].classList.add('active');
         }
-        
+
+        function loadPreview() {
+            let preview = document.getElementsByClassName('preview')[0];
+
+            backgroundImg.forEach((img) => {
+                preview.appendChild(document.createElement("img", {src:img, class:'trumbnail'}));
+            });
+
+            return document.getElementsByClassName('trumbnail');
+        }
     </script>
 </body>
 </html>
