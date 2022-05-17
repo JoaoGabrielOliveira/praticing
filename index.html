@@ -28,11 +28,11 @@
         <div class="slider">
             <img src="imgs/left-arrow.png" id="prev" alt="">
             <div class="preview">
-                <img src="imgs/slide1.webp" alt="" class="trumbnail">
-                <img src="imgs/slide2.jpg" alt="" class="trumbnail">
-                <img src="imgs/slide3.jpg" alt="" class="trumbnail">
-                <img src="imgs/slide4.jpg" alt="" class="trumbnail">
-                <img src="imgs/slide5.webp" alt="" class="trumbnail">
+                <img src="imgs/slide1.webp" alt="" class="thumbnail">
+                <img src="imgs/slide2.jpg" alt="" class="thumbnail">
+                <img src="imgs/slide3.jpg" alt="" class="thumbnail">
+                <img src="imgs/slide4.jpg" alt="" class="thumbnail">
+                <img src="imgs/slide5.webp" alt="" class="thumbnail">
             </div>
             <img src="imgs/left-arrow.png" id="next" alt="">
         </div>
@@ -47,42 +47,43 @@
             'imgs/slide5.jpg',
         ];
 
-        var trumbnail = loadPreview();
+        var thumbnails = loadPreview();
 
         var prev = document.getElementById('prev');
         var next = document.getElementById('next');
         var hero = document.getElementById("hero");
         let i = 0;
 
-        trumbnail[i].classList.add('active');
-        hero.style.backgroundImage = `url("${backgroundImg[i]}")`;
-        
+        activethumbnail(i);
 
         next.onclick = () => {
             if(i < backgroundImg.length){
-                trumbnail[i].classList.remove('active');
-                i++
-                hero.style.backgroundImage = `url("${backgroundImg[i]}")`;
-                trumbnail[i].classList.add('active');
+                thumbnails[i].classList.remove('active');
+                i++;
+                activethumbnail(i);
             }
         }
 
         prev.onclick = () => {
             if(i > 0)
-            trumbnail[i].classList.remove('active');
-            i--
-            hero.style.backgroundImage = `url("${backgroundImg[i]}")`;
-            trumbnail[i].classList.add('active');
+            thumbnails[i].classList.remove('active');
+            i--;
+            activethumbnail(i);
         }
 
         function loadPreview() {
             let preview = document.getElementsByClassName('preview')[0];
 
             backgroundImg.forEach((img) => {
-                preview.appendChild(document.createElement("img", {src:img, class:'trumbnail'}));
+                preview.appendChild(document.createElement("img", {src:img, class:'thumbnail'}));
             });
 
-            return document.getElementsByClassName('trumbnail');
+            return document.getElementsByClassName('thumbnail');
+        }
+        
+        function activethumbnail(index){
+            thumbnails[index].classList.add('active');
+            hero.style.backgroundImage = `url("${backgroundImg[index]}")`;
         }
     </script>
 </body>
