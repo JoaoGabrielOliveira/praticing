@@ -13,6 +13,9 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
+    
+    display: grid;
+    grid-template-rows: 20% 70% 10%;
 }
 
 button {
