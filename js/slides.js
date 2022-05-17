@@ -1,5 +1,7 @@
-var slides = [
-    slide("Natural Environment", 2027, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra nunc tincidunt est feugiat tincidunt.", "background.jpg")
+const slides = [
+    slide("Natural Environment", 2027, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra nunc tincidunt est feugiat tincidunt.", "background.jpg"),
+    slide("Family House", 2025, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra nunc tincidunt est feugiat tincidunt.", "backgrounds/background2.jpg"),
+    slide("Modern Architecture", 2026, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra nunc tincidunt est feugiat tincidunt.", "backgrounds/background3.jpg")
 ]
 
 function slide(title, data, text, img){
