@@ -66,7 +66,7 @@
         <div id="slider-counter">
             <ul>
                 <li id="min-value">01</li>
-                <li><progress value="50" max="100"></progress></li>
+                <li><progress value="0" max="0"></progress></li>
                 <li id="max-value">02</li>
             </ul>
         </div>
@@ -95,13 +95,35 @@
             </div>
         </div>
         <div id="slider">
-            <button id="slider-next-butten"><</button>
-            <button id="slider-next-butten">></button>
+            <button id="slider-prev-button"><</button>
+            <button id="slider-next-button">></button>
         </div>
     </footer>
 
     <script>
-        showSlide(slides[2]);
+        let slideIndex = 0;
+        const sliderProgressBar = document.getElementById('slider-counter').getElementsByTagName('progress')[0];
+        sliderProgressBar.value = slideIndex + 1;
+        sliderProgressBar.max = slides.length;
+        document.getElementById("max-value").textContent = slides.length;
+
+        showSlide(slides[slideIndex]);
+
+        const next = document.getElementById('slider-next-button'), prev = document.getElementById('slider-prev-button');
+        
+        next.onclick = (e) => {
+            if(slideIndex < slides.length){
+                showSlide(slides[++slideIndex]);
+                sliderProgressBar.value = slideIndex + 1;
+            }
+        }
+
+        prev.onclick = (e) => {
+            if(slideIndex < slides.length){
+                showSlide(slides[--slideIndex]);
+                sliderProgressBar.value = slideIndex + 1;
+            }
+        }
     </script>
     
 </body>
