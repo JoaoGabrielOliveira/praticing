@@ -15,4 +15,6 @@ function showSlide(slide){
     mainMessage.getElementsByTagName('h1')[0].textContent = slide.title;
     mainMessage.getElementsByTagName('p')[0].textContent = slide.text;
     document.body.style.backgroundImage = `url('${slide.img}')`;
+
+    getUpdateActualSlide();
 }

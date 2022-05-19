@@ -104,7 +104,7 @@
         const sliderProgressBar = document.getElementById('slider-counter').getElementsByTagName('progress')[0];
         sliderProgressBar.value = slideIndex + 1;
         sliderProgressBar.max = slides.length;
-        document.getElementById("max-value").textContent = slides.length;
+        document.getElementById("max-value").textContent = slides.length.toString().padStart(2, "0");
 
         showSlide(slides[slideIndex]);
 
@@ -113,7 +113,7 @@
         
         next.onclick = (e) => {
             if(slideIndex < slides.length - 1){
-                showSlide(slides[++slideIndex]);
+                showSlide(slides[++slideIndex]); 
                 sliderProgressBar.value = slideIndex + 1;
                 playAnimation(mainMessage,'fadeOut');
             }
@@ -134,6 +134,10 @@
             void element.offsetWidth;
             element.classList.add(animationName);
             
+        }
+
+        function getUpdateActualSlide(){
+            document.getElementById("min-value").textContent = (slideIndex + 1).toString().padStart(2, "0");
         }
     </script>
     
