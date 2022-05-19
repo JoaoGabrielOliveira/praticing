@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/animation.css" />
 
     <script src="js/slides.js"></script>
     <title>Houses</title>
@@ -108,11 +109,13 @@
         showSlide(slides[slideIndex]);
 
         const next = document.getElementById('slider-next-button'), prev = document.getElementById('slider-prev-button');
+        const mainMessage = document.getElementById('main-message');
         
         next.onclick = (e) => {
             if(slideIndex < slides.length){
                 showSlide(slides[++slideIndex]);
                 sliderProgressBar.value = slideIndex + 1;
+                playAnimation(mainMessage,'fadeOut');
             }
         }
 
@@ -120,7 +123,17 @@
             if(slideIndex < slides.length){
                 showSlide(slides[--slideIndex]);
                 sliderProgressBar.value = slideIndex + 1;
+                playAnimation(mainMessage,'fadeOut');
             }
+        }
+
+        function playAnimation(element = document.createElement('p'), animationName){
+            if(element.classList.contains(animationName))
+                element.classList.remove(animationName); 
+
+            void element.offsetWidth;
+            element.classList.add(animationName);
+            
         }
     </script>
     
