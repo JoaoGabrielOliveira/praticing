@@ -49,7 +49,7 @@
             </ul>
         </div>
 
-        <div id="main-message">
+        <div id="main-message" class="fadeOut">
             <div class="block">
                 <h3></h3>
                 <h1></h1>
@@ -112,7 +112,7 @@
         const mainMessage = document.getElementById('main-message');
         
         next.onclick = (e) => {
-            if(slideIndex < slides.length){
+            if(slideIndex < slides.length - 1){
                 showSlide(slides[++slideIndex]);
                 sliderProgressBar.value = slideIndex + 1;
                 playAnimation(mainMessage,'fadeOut');
@@ -120,7 +120,7 @@
         }
 
         prev.onclick = (e) => {
-            if(slideIndex < slides.length){
+            if(slideIndex > 0){
                 showSlide(slides[--slideIndex]);
                 sliderProgressBar.value = slideIndex + 1;
                 playAnimation(mainMessage,'fadeOut');
