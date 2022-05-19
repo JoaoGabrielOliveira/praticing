@@ -4,8 +4,8 @@ const slides = [
     slide("Modern Architecture", 2026, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra nunc tincidunt est feugiat tincidunt.", "backgrounds/background3.jpg")
 ]
 
-function slide(title, data, text, img){
-    return {title:title, data:data, text:text, img:img}
+function slide(title, date, text, img){
+    return {title:title, date:date, text:text, img:img}
 }
 
 function showSlide(slide){
