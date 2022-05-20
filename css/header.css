@@ -5,7 +5,7 @@ header {
 }
 
 header #logo {
-    color: #fff;
+    color: var(--primary-text-color);
     font-size: 130%;
     font-weight: 700;
     letter-spacing: 3px;
