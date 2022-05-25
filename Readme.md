@@ -8,13 +8,25 @@ The templete:
 
 
 I'm not thinking of following exactly the template. I want to make layout improvements.
-Result:
+That was the results:
 ![A image of a site, with a house in the forest as background](result.png)
 
+Slider controller working:
+![A image of a site, with a house in the forest as background](result.gif)
+
+---
+
+Feel free to comment and give me feedback.
+
+To look the web site working, [click here on the link!](#)  (LINK IS NOT WORKING YET!)
+
+---
 
 This project was made using the best of:
 - ![HTML icon](https://raw.githubusercontent.com/JoaoGabrielOliveira/praticing/master/icons/html5.png) HTML 5
 - ![CSS icon](https://raw.githubusercontent.com/JoaoGabrielOliveira/praticing/master/icons/css3.png) CSS 3
+- ![Javascript icon](https://raw.githubusercontent.com/JoaoGabrielOliveira/praticing/master/icons/javascript.png) Javascript
+
 ## NOTE
 
 - For each project it has a separate branch.
