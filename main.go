@@ -10,7 +10,7 @@ func main() {
 }
 
 func startApp() {
-	http.HandleFunc("/hello", hello)
+	http.HandleFunc("/", hello)
 	http.ListenAndServe(":8090", nil)
 }
 
