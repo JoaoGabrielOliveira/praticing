@@ -12,7 +12,7 @@ type Car struct {
 	Price    float64
 }
 
-var temp = template.Must(template.ParseGlob("templetes/*.html"))
+var temp = template.Must(template.ParseGlob("views/*.html"))
 
 func main() {
 	startApp()
