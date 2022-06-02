@@ -1,8 +1,11 @@
 package router
 
 import (
+	"encoding/json"
+	"fmt"
 	"html/template"
 	"net/http"
+	"praticing/models"
 	"praticing/repository/car"
 	"praticing/util"
 )
@@ -22,7 +25,16 @@ func StartApp() {
 }
 
 func Index(w http.ResponseWriter, req *http.Request) {
-	err := temp.ExecuteTemplate(w, "Index", car.All())
+	var err error
+	switch req.Method {
+	case http.MethodGet:
+		err = temp.ExecuteTemplate(w, "Index", car.All())
+	case http.MethodPost:
+		c := models.Car{}
+
+		json.NewDecoder(req.Body).Decode(&c)
+		fmt.Fprintf(w, "Car: %+v", c)
+	}
 
 	util.CheckError(err)
 }
