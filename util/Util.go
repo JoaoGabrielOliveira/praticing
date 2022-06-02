@@ -1,4 +1,4 @@
-package config
+package util
 
 func CheckError(err error) {
 	if err != nil {
