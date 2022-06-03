@@ -2,7 +2,7 @@ package database
 
 import (
 	"database/sql"
-	"errors"
+	"praticing/errors"
 	"praticing/util"
 
 	_ "github.com/lib/pq"
@@ -17,12 +17,5 @@ func ConnectDatabase() (*sql.DB, error) {
 
 	util.CheckError(err, nil)
 
-	return connection, checkConnection(connection)
-}
-
-func checkConnection(connection *sql.DB) error {
-	if connection.Ping() != nil {
-		return errors.New("570 - Can't connect to database")
-	}
-	return nil
+	return connection, errors.CheckDatabaseConnection(connection)
 }
