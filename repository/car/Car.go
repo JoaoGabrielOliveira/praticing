@@ -7,24 +7,38 @@ import (
 	"praticing/util"
 )
 
-func All() []models.Car {
-	db := database.ConnectDatabase()
+func All() ([]models.Car, error) {
+	db, err := database.ConnectDatabase()
+	if err != nil {
+		return nil, err
+	}
 
 	rows, err := db.Query("SELECT * FROM cars")
-	util.CheckError(err)
+	if util.CheckError(err, nil) {
+		return nil, err
+	}
 
-	return readRow(rows)
+	result, err := readRow(rows)
+	if util.CheckError(err, nil) {
+		return nil, err
+	}
+
+	return result, nil
 }
 
 func Get(id string) models.Car {
-	db := database.ConnectDatabase()
+	db, err := database.ConnectDatabase()
+	if util.CheckError(err, nil) {
+		return models.Car{}
+	}
+
 	stmt, err := db.Prepare("SELECT * FROM cars WHERE id=$1")
-	util.CheckError(err)
+	util.CheckError(err, nil)
 
 	rows, err := stmt.Query(id)
-	util.CheckError(err)
-
-	result := readRow(rows)
+	util.CheckError(err, nil)
+	result, err := readRow(rows)
+	util.CheckError(err, nil)
 
 	if len(result) > 0 {
 		return result[0]
@@ -32,7 +46,7 @@ func Get(id string) models.Car {
 	return models.Car{}
 }
 
-func readRow(rows *sql.Rows) []models.Car {
+func readRow(rows *sql.Rows) ([]models.Car, error) {
 	cars := []models.Car{}
 
 	for rows.Next() {
@@ -40,9 +54,12 @@ func readRow(rows *sql.Rows) []models.Car {
 		var model_id int
 		var price float64
 
-		rows.Scan(&id, &model_id, &price)
+		err := rows.Scan(&id, &model_id, &price)
+		if util.CheckError(err, nil) {
+			return nil, err
+		}
 
 		cars = append(cars, models.Car{Id: id, Model_id: model_id, Price: price})
 	}
-	return cars
+	return cars, nil
 }

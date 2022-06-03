@@ -28,10 +28,15 @@ func Index(w http.ResponseWriter, req *http.Request) {
 	var err error
 	switch req.Method {
 	case http.MethodGet:
-		err = temp.ExecuteTemplate(w, "Index", CarRepository.All())
+		if cars, cars_err := CarRepository.All(); cars_err != nil {
+			http.Error(w, cars_err.Error(), 500)
+		} else {
+			err = temp.ExecuteTemplate(w, "Index", cars)
+		}
+
 	}
 
-	util.CheckError(err)
+	util.CheckError(err, nil)
 }
 
 func Car(w http.ResponseWriter, req *http.Request) {
@@ -39,7 +44,7 @@ func Car(w http.ResponseWriter, req *http.Request) {
 	switch req.Method {
 	case http.MethodGet:
 		id, ok := req.URL.Query()["id"]
-		util.CheckError(err)
+		util.CheckError(err, nil)
 
 		if !ok || len(id[0]) < 1 {
 			fmt.Println("Url Param 'key' is missing")
@@ -55,5 +60,5 @@ func Car(w http.ResponseWriter, req *http.Request) {
 		fmt.Fprintf(w, "Car: %+v", c)
 	}
 
-	util.CheckError(err)
+	util.CheckError(err, nil)
 }
