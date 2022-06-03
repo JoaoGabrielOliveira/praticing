@@ -24,7 +24,12 @@ func Get(id string) models.Car {
 	rows, err := stmt.Query(id)
 	util.CheckError(err)
 
-	return readRow(rows)[0]
+	result := readRow(rows)
+
+	if len(result) > 0 {
+		return result[0]
+	}
+	return models.Car{}
 }
 
 func readRow(rows *sql.Rows) []models.Car {
