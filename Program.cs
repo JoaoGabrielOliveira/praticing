@@ -19,4 +19,18 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+           name: "default",
+           pattern: "/student",
+           defaults: new {controller="Student", action="Index" });
+
+    endpoints.MapControllerRoute(
+           name: "default",
+           pattern: "/student/{id}",
+           defaults: new {controller="Student", action="Get"});
+    
+});
+
 app.Run();
