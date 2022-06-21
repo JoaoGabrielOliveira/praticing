@@ -4,10 +4,12 @@ using Repositories;
 
 namespace Controllers
 {
-    public class StudentController : Controller
+    public class StudentController : ApiController<Student>
     {
+        public StudentController() : base(new StudentRepository()) {}
+
         // GET: /student
-        public IEnumerable<Student> Index()
+        public override IEnumerable<Student> Index()
         {
             List<Student> students = new List<Student>()
             {
@@ -18,9 +20,9 @@ namespace Controllers
         }
 
         // GET: /student/{id}
-        public Student Get(int id)
+        public override Student Get(object id)
         {
-            return new Student(id, "João", "Conceição", "1123123", new List<Course>());
+            return new Student((int)id, "João", "Conceição", "1123123", new List<Course>());
         }
     }
 }
