@@ -1,6 +1,6 @@
 namespace Models {
     public abstract class Model {
-        public object Id;
+        public object Id {get; set; }
 
         protected Model(object id)
         {

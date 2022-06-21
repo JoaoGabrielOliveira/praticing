@@ -2,10 +2,10 @@ namespace Models
 {
     public class Student : Model
     {
-        public String FirstName;
-        public String LastName;
-        public String RegistrationNumber;
-        public List<Course> Courses;
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+        public String RegistrationNumber { get; set; }
+        public List<Course> Courses { get; set; }
 
         public Student(int id, String firstName, String lastName, String RN, List<Course> courses) : base(id)
         {
