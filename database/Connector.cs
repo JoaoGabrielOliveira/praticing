@@ -4,7 +4,7 @@ namespace Database;
 
 
 public class Connector : IDisposable {
-    protected const string ConnectionString = "";
+    protected const string ConnectionString = "Server=localhost:1433;User Id=sa;Password=Pass1234;";
     public SqlConnection Connection;
 
     public Connector(){
