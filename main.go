@@ -1,7 +1,7 @@
 package main
 
-import "praticing/config"
+import "praticing/router"
 
 func main() {
-	config.StartApp()
+	router.StartApp()
 }
