@@ -1,0 +1,29 @@
+nav {
+    display: flex;
+    flex-direction: 1 0 0;
+    border-bottom: 5px solid var(--button-bg-color);
+}
+
+nav * {
+    user-select: none;
+}
+
+nav > button {
+    border: none;
+    background: var(--button-bg-color);
+
+    padding: 0.2em 2em;
+    display: block;
+    list-style: none;
+}
+
+nav > button ul li {
+    width: 100%;
+    display: block;
+    list-style: none;
+}
+
+nav > button:hover,  button ul li:hover {
+    background: var(--button-bg-color-dark);
+    cursor: pointer;
+}
