@@ -13,15 +13,7 @@
     margin: 0;
     padding: 0%;
   }
-  
-  main textarea#text {
-    font-family: var(--text-font);
-    font-size: var(--text-size);
-  
-    min-width: 100%;
-    min-height: 95vh;
-  
-    resize: none;
-    border: none;
-    
+
+  main {
+    height: 100%;
   }

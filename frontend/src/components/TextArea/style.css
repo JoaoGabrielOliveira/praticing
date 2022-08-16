@@ -1,0 +1,10 @@
+textarea {
+    font-family: var(--text-font);
+    font-size: var(--text-size);
+
+    outline: none;
+    resize: none;
+
+    width: 100%;
+    height: 100%;
+}
