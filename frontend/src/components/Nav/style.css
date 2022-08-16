@@ -1,29 +1,35 @@
 nav {
     display: flex;
-    flex-direction: 1 0 0;
+    flex: 1 0 0;
     border-bottom: 5px solid var(--button-bg-color);
 }
 
-nav * {
+nav > * {
     user-select: none;
+    min-width: 2em;
 }
 
-nav > button {
+nav span.menuDropdown {
+    position: relative;
+    display: inline-block;
+}
+
+nav button {
     border: none;
     background: var(--button-bg-color);
-
-    padding: 0.2em 2em;
-    display: block;
-    list-style: none;
+    padding: 0.2em 4em;
 }
 
-nav > button ul li {
-    width: 100%;
-    display: block;
-    list-style: none;
-}
-
-nav > button:hover,  button ul li:hover {
+nav button:hover {
     background: var(--button-bg-color-dark);
     cursor: pointer;
+}
+
+span.menuDropdown ul {
+    position: absolute;
+    width: 100%;
+}
+
+span.menuDropdown ul li {
+    list-style: none;
 }
