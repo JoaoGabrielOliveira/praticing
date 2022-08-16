@@ -18,11 +18,11 @@ nav button {
     border: none;
     background: var(--button-bg-color);
     padding: 0.2em 4em;
+    cursor: pointer;
 }
 
 nav button:hover {
     background: var(--button-bg-color-dark);
-    cursor: pointer;
 }
 
 span.menuDropdown ul {
