@@ -2,20 +2,20 @@ using Repositories;
 
 namespace Controllers
 {
-    public abstract class ApiController<T> : Microsoft.AspNetCore.Mvc.Controller where T : Models.Model
+    public abstract class ApiController<T, ID> : Microsoft.AspNetCore.Mvc.Controller where T : Models.Model<ID>
     {
-        protected IRepository<T> Repository;
+        protected IRepository<T, ID> Repository;
 
-        public ApiController(IRepository<T> repository)
+        public ApiController(IRepository<T, ID> repository)
         {
             Repository = repository;
         }
 
         public virtual IEnumerable<T> Index()
         {
-            return Repository.All();
+            return Repository.Find();
         }
-        public virtual T Get(object id)
+        public virtual T Get(ID id)
         {
             return Repository.GetById(id);
         }

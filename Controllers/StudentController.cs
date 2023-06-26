@@ -4,25 +4,20 @@ using Repositories;
 
 namespace Controllers
 {
-    public class StudentController : ApiController<Student>
+    public class StudentController : ApiController<Student, long>
     {
         public StudentController() : base(new StudentRepository()) {}
 
         // GET: /student
         public override IEnumerable<Student> Index()
         {
-            List<Student> students = new List<Student>()
-            {
-                new Student(0, "João", "Conceição", "1123123", new List<Course>())
-            };
-
-            return students;
+            return this.Repository.Find();
         }
 
         // GET: /student/{id}
-        public override Student Get(object id)
+        public override Student Get(long id)
         {
-            return new Student((int)id, "João", "Conceição", "1123123", new List<Course>());
+            return this.Repository.GetById(id);
         }
     }
 }
