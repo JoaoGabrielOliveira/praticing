@@ -1,6 +1,6 @@
 namespace Models
 {
-    public class Student : Model
+    public class Student : Model<long>
     {
         public String FirstName { get; set; }
         public String LastName { get; set; }
@@ -14,6 +14,8 @@ namespace Models
             RegistrationNumber = RN;
             Courses = courses;
         }
+
+        public Student() : base() {}
     }
     
 }

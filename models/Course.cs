@@ -1,6 +1,6 @@
 namespace Models
 {
-    public class Course : Model
+    public class Course : Model<long>
     {
         public String Code  {get; set;}
         public String Name {get; set;}
