@@ -1,12 +1,12 @@
 using Models;
+using Database;
 
 namespace Repositories
 {
-    public interface IRepository<T> where T : Model  {
-        T GetBy(string param, object value);
-        T GetById(object id);
+    public interface IRepository<T, ID> where T : Model<ID>  {
+        T GetById(ID id);
 
-        List<T> All();
+        List<T> Find();
 
         void Add(T model);
         void Update(T model);
